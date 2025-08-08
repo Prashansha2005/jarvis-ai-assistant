@@ -38,11 +38,17 @@ Install the following libraries in your virtual environment:
 
 bash
 pip install SpeechRecognition
+
 pip install pyttsx3
+
 pip install pygame
+
 pip install gTTS
+
 pip install requests
+
 pip install google-generativeai
+
 
 #FILE STRUCTURE:
 
