@@ -47,7 +47,7 @@ def tell_time():
 
 
 def aiprocess(command):
-    genai.configure(api_key="AIzaSyClmugZy06i0WS4PIpzw_P2NzIupFu53_s")
+    genai.configure(api_key="your_api_here")
     model = genai.GenerativeModel(model_name="gemini-1.5-flash")  # or "gemini-pro"
 
 # Generate content
