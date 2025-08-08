@@ -11,7 +11,7 @@ import datetime
 from time import sleep
 
 
-newsapi = "2486c441f36a44df86c11827c46e38a6"
+newsapi = "your_news_api"
 
 def speak_old(text):
     print("Speaking:", text)
