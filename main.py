@@ -13,19 +13,22 @@ from time import sleep
 
 newsapi = "your_news_api"
 
-def speak_old(text):
+def ai_process(command):
+    genai.configure(api_key="your_api_here")
+    model = genai.GenerativeModel(model_name="gemini-1.5-flash")  
+
+# Generate content
+    response = model.generate_content(command)
+
+# Print the response
+    return response.text
+    
+def speak(text):
     print("Speaking:", text)
     engine = pyttsx3.init()
     engine.say(text)
     engine.runAndWait()
-
-def speak(text):
     
-
-    from gtts import gTTS 
-
-def speak(text):
-    print("Speaking:", text)
     
     tts = gTTS(text=text, lang='en')
     tts.save("temp.mp3")
@@ -46,15 +49,6 @@ def tell_time():
     return now
 
 
-def aiprocess(command):
-    genai.configure(api_key="your_api_here")
-    model = genai.GenerativeModel(model_name="gemini-1.5-flash")  # or "gemini-pro"
-
-# Generate content
-    response = model.generate_content(command)
-
-# Print the response
-    return response.text
 
 TASK_FILE = "tasks.txt"
 def show_tasks():
@@ -80,7 +74,7 @@ def add_task(task, time_str):
 
 def remind_tasks():
     while True:
-        now = datetime.now().strftime("%H:%M")
+        now = datetime.datetime.now().strftime("%H:%M")
         if not os.path.exists(TASK_FILE):
             sleep(30)
             continue
@@ -102,7 +96,7 @@ def remind_tasks():
 
         sleep(60)
 
-def processcommand(c):
+def process_command(c):
     if "open google" in c.lower():
         webbrowser.open("https://google.com")
     elif "open facebook" in c.lower():
@@ -138,7 +132,7 @@ def processcommand(c):
     
 
     else:
-        output=aiprocess(c)
+        output=ai_process(c)
         speak(output)
 
    
@@ -163,7 +157,7 @@ if __name__ == "__main__":
 
             if "jarvis" in command:
                 print("Jarvis wake word detected")
-                speak("Yaa")
+                speak("Yes")
 
                 with sr.Microphone() as source:
                     print("Jarvis active, listening for command...")
