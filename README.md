@@ -1,5 +1,5 @@
 # jarvis-ai-assistant
-this is my first ai assistant named jarvis
+
 # 🧠 Jarvis AI Voice Assistant
 
 **Jarvis** is a Python-based voice assistant that can respond to your voice commands using real-time speech recognition and AI-generated responses. Inspired by the Jarvis from Iron Man, this assistant can open websites, play music, fetch news, give reminders, and even talk to you using Gemini AI (Google).
@@ -17,7 +17,17 @@ this is my first ai assistant named jarvis
 - 📅 Ask for current date & time
 
 ---
+## Technologies Used
 
+- Python
+- SpeechRecognition
+- Google Gemini API
+- gTTS
+- pygame
+- requests
+- NewsAPI
+
+  
 # How It Works
 
 # Workflow:
@@ -78,4 +88,19 @@ Python libraries: speech_recognition, gtts, pygame, pyttsx3, requests
 
 Gemini AI by Google
 
+
+## Limitations
+
+- Speech recognition accuracy depends on microphone quality.
+- Internet connection is required for Gemini API and News API.
+- Currently supports a predefined music library.
+
+  ## Future Improvements
+
+- GUI interface
+- Better speech recognition
+- Weather integration
+- Dynamic music search
+- Chat history
+  
 Inspired by the Iron Man movie AI
