@@ -1,5 +1,5 @@
+#IMPORT REQUIRED LIBRARIES
 import speech_recognition as sr
-import pyttsx3
 import webbrowser
 import musiclibrary
 import requests
@@ -10,26 +10,25 @@ import os
 import datetime
 from time import sleep
 
+# API Keys and Gemini Setup
+NEWS_API_KEY = "your_news_api"
+GENAI_API_KEY = "YOUR_GEMINI_API_KEY"
 
-newsapi = "your_news_api"
+genai.configure(api_key=GENAI_API_KEY)
+model = genai.GenerativeModel(
+    model_name="gemini-1.5-flash"
+)
 
+# AI Response Function
+# Generates responses using Gemini AI
 def ai_process(command):
-    genai.configure(api_key="your_api_here")
-    model = genai.GenerativeModel(model_name="gemini-1.5-flash")  
-
-# Generate content
     response = model.generate_content(command)
-
-# Print the response
     return response.text
-    
-def speak(text):
+
+# Text-to-Speech Function
+# Converts text into speech using gTTS
+def speak(text): 
     print("Speaking:", text)
-    engine = pyttsx3.init()
-    engine.say(text)
-    engine.runAndWait()
-    
-    
     tts = gTTS(text=text, lang='en')
     tts.save("temp.mp3")
 
@@ -37,20 +36,18 @@ def speak(text):
     pygame.mixer.init()
     pygame.mixer.music.load("temp.mp3")
     pygame.mixer.music.play()
-
-    
     while pygame.mixer.music.get_busy():
         pygame.time.Clock().tick(10)
-
     pygame.mixer.quit() 
 
+# Returns Current System Time
 def tell_time():
-    now = datetime.datetime.now().strftime("%H:%M")
-    return now
+    current_time = datetime.datetime.now().strftime("%H:%M")
+    return current_time
 
-
-
+# Reminder System
 TASK_FILE = "tasks.txt"
+# Displays all saved tasks
 def show_tasks():
     if not os.path.exists(TASK_FILE):
         speak("No tasks yet.")
@@ -67,11 +64,13 @@ def show_tasks():
     else:
         speak("No tasks found.")
 
+# Saves a new task to tasks.txt
 def add_task(task, time_str):
     with open(TASK_FILE, "a") as file:
         file.write(f"{task}|{time_str}\n")
     speak(f"Task added: {task} at {time_str}")
 
+# Continuously checks for reminder time
 def remind_tasks():
     while True:
         now = datetime.datetime.now().strftime("%H:%M")
@@ -96,6 +95,9 @@ def remind_tasks():
 
         sleep(60)
 
+# Command Processing
+# Executes commands based on
+# user's voice input
 def process_command(c):
     if "open google" in c.lower():
         webbrowser.open("https://google.com")
@@ -112,8 +114,8 @@ def process_command(c):
             webbrowser.open(link)
         else:
             speak(f"Sorry, {song} not found in your library.")
-    elif "news" in c.lower():
-        r = requests.get(f"https://newsapi.org/v2/top-headlines?country=us&apiKey={newsapi}")
+    elif "news" in c.lower(): # Fetch top headlines using NewsAPI
+        r = requests.get(f"https://newsapi.org/v2/top-headlines?country=us&apiKey={NEWS_API_KEY}")
         if r.status_code == 200:
             data = r.json()
             articles = data.get('articles', [])
@@ -125,20 +127,15 @@ def process_command(c):
             speak("Sorry, I couldn't fetch the news.")
 
     elif "date and time" in c.lower():
-        nom=tell_time()
-        speak(f"the date and time is {nom}")
+        current_time = tell_time()
+        speak(f"the date and time is {current_time}")
 
-    elif "my task are" in c.lower()
-    
+    elif "my tasks" in c.lower():
+        show_tasks()
 
     else:
-        output=ai_process(c)
+        output = ai_process(c)  # If the command is unknown, send it to Gemini AI
         speak(output)
-
-   
-
- 
-
 
 if __name__ == "__main__":
     speak("Initializing Jarvis...")
@@ -166,7 +163,7 @@ if __name__ == "__main__":
 
                 command = recognizer.recognize_google(audio).lower()
                 print("Final command:", command)
-                processcommand(command)
+                process_command(command)
 
         except sr.UnknownValueError:
             print("Didn't catch that. Try again.")
