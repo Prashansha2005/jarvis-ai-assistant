@@ -7,5 +7,5 @@ if not api_key:
 
 genai.configure(api_key=api_key)
 model = genai.GenerativeModel(model_name="gemini-1.5-flash")
-response = model.generate_content("do you love me")
+response = model.generate_content("Explain what a black hole is")
 print(response.text)
