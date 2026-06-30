@@ -42,52 +42,6 @@
 
 ---
 
-#Requirements
-
-Install the following libraries in your virtual environment:
-
-bash
-pip install SpeechRecognition
-
-pip install pyttsx3
-
-pip install pygame
-
-pip install gTTS
-
-pip install requests
-
-pip install google-generativeai
-
-
-#FILE STRUCTURE:
-
-jarvis-ai-assistant/
-
-├── main.py            # Main assistant logic
-
-├── Gemini_client.py          # Gemini or OpenAI 
-test script
-
-├── musiclibrary.py    # Dictionary of song names to URLs
-
-├── reminders.py       #  Separate logic for reminders
-
-
-
-
-
-
-#API Keys Used
-News API – for top headlines (newsapi.org)
-
-Google Gemini API Key – for AI response generation
-
-#Credits
-Python libraries: speech_recognition, gtts, pygame, pyttsx3, requests
-
-Gemini AI by Google
-
 
 ## Limitations
 
