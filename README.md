@@ -66,16 +66,16 @@ jarvis-ai-assistant/
 
 ├── main.py            # Main assistant logic
 
-├── client.py          # Gemini or OpenAI 
+├── Gemini_client.py          # Gemini or OpenAI 
 test script
 
 ├── musiclibrary.py    # Dictionary of song names to URLs
 
-├── reminders.py       # (Optional) Separate logic for reminders
+├── reminders.py       #  Separate logic for reminders
 
-├── temp.mp3           # Temp file used for voice output
 
-├── tasks.txt          # Stores reminder tasks
+
+
 
 
 #API Keys Used
