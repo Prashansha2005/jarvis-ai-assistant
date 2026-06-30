@@ -5,6 +5,11 @@
 **Jarvis** is a Python-based voice assistant that can respond to your voice commands using real-time speech recognition and AI-generated responses. Inspired by the Jarvis from Iron Man, this assistant can open websites, play music, fetch news, give reminders, and even talk to you using Gemini AI (Google).
 
 ---
+## 🎥 Demo
+
+Watch the Jarvis AI Assistant in action:
+
+**LinkedIn Demo:**https://www.linkedin.com/posts/prashansa-r-72582b331_along-python-voiceassistant-activity-7354184165090549760-JCsp?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFOYIE0BiRTJc39TUx-PSJYY1s0lvbY8fmk
 
 #  Features
 
